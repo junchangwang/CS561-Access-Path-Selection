@@ -2,6 +2,7 @@
 
 #include "debit_extension.hpp"
 #include "bm_dbgen.hpp"
+#include "bm_dsgen.hpp"
 
 #ifndef DUCKDB_AMALGAMATION
 #include "duckdb.hpp"
@@ -110,7 +111,11 @@ static void PragmaLoadBitmap(ClientContext &context, const FunctionParameters &p
         // else if (input_value == "receiptdate") {
         //     Table_config * config_receiptdate = context.Make_Config(input_value, 10562, false);
         //     state = context.Read_BM(config_receiptdate, &context.bitmap_receiptdate, 59986052);
-        // } 
+        // }
+        else if (input_value == "ss_item_sk") {
+            Table_config * config_ss_item_sk = context.Make_Config(input_value, 102001, "bmz", 3000, false);
+            state = context.Read_BM(config_ss_item_sk, &context.bitmap_ss_item_sk, 28800991);
+        } 
         else{
             std::cout << "Unknown bitmap name: " << input_value << std::endl;
             continue;
@@ -131,6 +136,12 @@ static string PragmaTpchQuery(ClientContext &context, const FunctionParameters &
     return bmtpch::DBGenWrapper::GetQuery(index);
 }
 
+static string PragmaTpcdsQuery(ClientContext &context, const FunctionParameters &parameters) {
+    context.query_source = "bm_tpcds";
+    auto index = parameters.values[0].GetValue<int32_t>();
+    return bmtpcds::DSGenWrapper::GetQuery(index);
+}
+
 static string PragmaBMGroupBy(ClientContext &context, const FunctionParameters &parameters) {
     context.query_source = "bm_tpch";
     return "SELECT sum(l_quantity) from lineitem WHERE l_shipdate >= CAST('1993-01-01' AS date) AND l_shipdate < CAST('1998-01-01' AS date) group by l_returnflag,l_linestatus;";
@@ -144,6 +155,9 @@ static void LoadInternal(DuckDB &db) {
 
     auto bmtpch_func = PragmaFunction::PragmaCall("bm_tpch", PragmaTpchQuery, {LogicalType::BIGINT});
 	ExtensionUtil::RegisterFunction(db_instance, bmtpch_func);
+
+    auto bmtpcds_func = PragmaFunction::PragmaCall("bm_tpcds", PragmaTpcdsQuery, {LogicalType::BIGINT});
+	ExtensionUtil::RegisterFunction(db_instance, bmtpcds_func);
 
     auto bm_groupby_func = PragmaFunction::PragmaCall("bm_groupby", PragmaBMGroupBy, {}, LogicalType::VARCHAR);
     ExtensionUtil::RegisterFunction(db_instance, bm_groupby_func);

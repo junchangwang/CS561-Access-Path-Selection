@@ -34,3 +34,9 @@ Below are the required bitmap columns for each supported TPCH query in DEBIT:
 - (orderdate_GE_364) for Q5
 - (shipdate_GE_364, discount, quantity) for Q6
 - (shipdate_GE_30) for Q14
+
+For TPCDS Query03, you can use  the following command:
+```DuckDB
+pragma load_bitmap(ss_item_sk);
+pragma bm_tpcds(3);
+```

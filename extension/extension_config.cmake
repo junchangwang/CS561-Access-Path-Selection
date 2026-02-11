@@ -11,6 +11,7 @@
 duckdb_extension_load(core_functions)
 duckdb_extension_load(parquet)
 duckdb_extension_load(tpch)
+duckdb_extension_load(tpcds)
 duckdb_extension_load(debit)
 # The Linux allocator has issues so we use jemalloc, but only on x86 because page sizes are fixed at 4KB.
 # Configuring jemalloc properly for 32bit is a hassle, and not worth it so we only enable on 64bit

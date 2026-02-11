@@ -101,6 +101,8 @@ void Selective_Gather(ExecutionContext &context, const PhysicalTableScan &op, st
 
 void HashJoin(ExecutionContext &context, const PhysicalTableScan &op);
 
+void BMTPCDS_Q3(ExecutionContext &context, const PhysicalTableScan &op);
+
 };
 
 }

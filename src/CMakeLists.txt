@@ -20,6 +20,7 @@ INCLUDE_DIRECTORIES(${Boost_INCLUDE_DIRS})
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../extension/debit/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../extension/debit/dbgen)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../extension/debit/dsgen)
 
 if(NOT MSVC)
   set(CMAKE_CXX_FLAGS_DEBUG

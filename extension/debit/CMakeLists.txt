@@ -6,6 +6,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../src/include/)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/CUBIT-dev/src)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dbgen/include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/dsgen/include)
 
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++17")
@@ -20,6 +21,8 @@ set(FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/CUBIT-dev/src/fastbit/bitvector.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/dbgen/bm_dbgen.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/dbgen/bmtpch_constants.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/dsgen/bm_dsgen.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/dsgen/bmtpcds_constants.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/execution/tpch/bitmap_table_scan.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/execution/tpch/query/Q1.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/execution/tpch/query/Q3.cpp
@@ -38,6 +41,8 @@ set(FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/execution/tpch/test/DuckdbSIMD.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/execution/tpch/test/groupbyTest.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/execution/tpch/test/hashjoin.cpp
+
+    ${CMAKE_CURRENT_SOURCE_DIR}/execution/tpcds/query/Q3.cpp
     
 )
 

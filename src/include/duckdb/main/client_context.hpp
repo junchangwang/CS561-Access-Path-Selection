@@ -113,6 +113,7 @@ public:
 	BaseTable *bitmap_group2;
 	vector<int64_t> q12_orderkey;
 	vector<int64_t> q18_orderkey;
+	BaseTable *bitmap_ss_item_sk;
 
 	std::string query_source = "tpch";
 

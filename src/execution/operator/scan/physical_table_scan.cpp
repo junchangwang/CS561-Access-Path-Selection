@@ -6,6 +6,7 @@
 #include "duckdb/transaction/transaction.hpp"
 #include "execution/tpch/bitmap_table_scan.hpp"
 #include "include/bmtpch_constants.hpp"
+#include "include/bmtpcds_constants.hpp"
 #include "duckdb/function/table/table_scan.hpp"
 
 #include <utility>
@@ -199,6 +200,14 @@ SourceResultType PhysicalTableScan::GetData(ExecutionContext &context, DataChunk
 		return SourceResultType::FINISHED;
 	}
 
+	if (context.client.query_source == "bm_tpcds") {
+		static BMTableScan bm_table_scan;
+
+		if(context.client.GetCurrentQuery() == (char*)BMTPCDS_QUERIES_03) {
+			bm_table_scan.BMTPCDS_Q3(context, *this);
+			context.client.query_source = "tpch";
+		}
+	}
 	
 	TableFunctionInput data(bind_data.get(), l_state.local_state.get(), g_state.global_state.get());
 

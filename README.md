@@ -15,6 +15,8 @@ Second，after the compilation is finished, you can load the corresponding bitma
 pragma load_bitmap(col_name1, col_name2);
 ```
 
+You can view the bitmaps that each query needs to load in the file extension/debit/debit_extension.cpp.
+
 DEBIT currently supports TPCH Q1, Q5, Q6, and Q14.
 For example, if you want to run Q6, you can use the following command in DuckDB:
 

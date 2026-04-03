@@ -6,7 +6,7 @@ This branch includes a DuckDB with bitmap indexing (along with bitmap instances 
 
 We have prepared the required bitmap instances. Please download them from https://1drv.ms/u/c/4f1a15e54aa03b95/IQBZNNczpYI_T5yUscwfIpfkAcK0HBjVEG9kT0w9_ta5f58?e=v18wwU
 
-Then, copy the compressed file bitmap_data.tar.gz into this directory and extract it.
+Then, copy the compressed file bitmap_data.tar.gz into this directory and extract it by using the command "tar zxf bitmap_data.tar.gz".
 
 ### How to run BitmapIndexing？
 

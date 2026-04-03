@@ -2,7 +2,7 @@
 
 This project contains a framework for students to quickly configure and evaluate access path selection strategies in DuckDB, a vectorized push-based columnar DBMS. 
 
-The code repos includes a sophisticated implementation developed by the TAs, allowing students to benchmark it against native zone maps and bitmap indexing quickly.
+This branch contains a sophisticated implementation of Column Sketches. To benchmark bitmap indexing and DuckDB's default zone maps, please switch to the BitmapIndexing branch. Although the two branches have not been merged, they share the same underlying codebase, so the comparison should be fair.
 
 ### Walk through the code
 

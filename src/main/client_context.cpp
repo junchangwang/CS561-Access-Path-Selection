@@ -193,9 +193,12 @@ Table_config* ClientContext::Make_Config(std::string name, int cardinality, std:
 	config->GE_group_len = group_length;
 	if(config->encoding == GE) {
 		// find directory name for group encoding
-		path.append("_");
-		path.append(to_string(group_length));
-		config->GROUP_PATH = path;
+		std::string group_path = file_format + "_" + to_string((int)(1500000 * ClientContext::sf)) + "_" + name + "_" + to_string(group_length);
+		if(access(group_path.c_str(), F_OK) == -1) {
+			group_path = global_path + group_path;
+		}
+		std::cout << "group path: " << group_path <<std::endl;
+		config->GROUP_PATH = group_path;
 	}
 
 	return config;

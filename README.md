@@ -48,4 +48,3 @@ Note that we have included bitmap instances for TPC-H Q1, Q5, Q6, and Q14 in thi
 - (shipdate, linestatus, returnflag) for Q1
 - (orderkey, suppkey) for Q5
 - (shipdate_GE_364, discount, quantity) for Q6
-- (shipdate_GE_30) for Q14
